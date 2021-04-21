@@ -1,25 +1,63 @@
-import logo from './logo.svg';
 import './App.css';
+import Search from "./components/Search/Search";
+import Weather from "./components/Weather/Weather";
+import * as React from "react";
+import {weatherAPI} from "./components/API/api";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+    state = {
+        city: undefined,
+        country: undefined,
+        temp: undefined,
+        pressure: undefined,
+        error: undefined
+    };
+
+    gettingWeather = (e) => {
+        e.preventDefault();
+        const city = e.target.elements.city.value;
+        if (city) {
+            weatherAPI.getWeather(city)
+                .then(data => {
+                        this.setState({
+                            city: data.name,
+                            country: data.sys.country,
+                            temp: data.main.temp,
+                            pressure: data.main.pressure,
+                            error: undefined,
+                        })
+                    }
+                );
+            e.target.elements.city.value = '';
+        } else {
+            this.setState({
+                city: undefined,
+                country: undefined,
+                temp: undefined,
+                pressure: undefined,
+                error: 'Input your city'
+            })
+        }
+
+    };
+
+    render() {
+        return (
+            <div className="App">
+                <h1>Weather APP</h1>
+                <Search gettingWeather={this.gettingWeather}/>
+                <Weather city={this.state.city}
+                         temp={this.state.temp}
+                         country={this.state.country}
+                         pressure={this.state.pressure}
+                         error={this.state.error}
+                />
+            </div>
+        );
+    }
+
+
 }
 
 export default App;
