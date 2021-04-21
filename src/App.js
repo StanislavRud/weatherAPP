@@ -4,6 +4,7 @@ import Weather from "./components/Weather/Weather";
 import * as React from "react";
 import {weatherAPI} from "./components/API/api";
 
+
 class App extends React.Component {
 
     state = {
@@ -61,7 +62,6 @@ class App extends React.Component {
                          tempMax={this.state.tempMax}
                          img={this.state.img}
                          error={this.state.error}
-
                 />
             </div>
         );
