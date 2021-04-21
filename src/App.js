@@ -32,7 +32,7 @@ class App extends React.Component {
                             feelsLike: data.main.feels_like,
                             tempMin: data.main.temp_min,
                             tempMax: data.main.temp_max,
-                            img: data.weather.icon,
+                            img: data.weather[0].icon,
                             error: undefined
                         })
                     }
@@ -59,7 +59,7 @@ class App extends React.Component {
                          feelsLike={this.state.feelsLike}
                          tempMin={this.state.tempMin}
                          tempMax={this.state.tempMax}
-                         img={this.state.0.img}
+                         img={this.state.img}
                          error={this.state.error}
 
                 />
