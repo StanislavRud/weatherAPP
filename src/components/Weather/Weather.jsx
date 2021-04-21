@@ -10,9 +10,15 @@ const Weather = (props) => {
                     </div>
                     <div className="temp">
                         <p>Temp: {props.temp} °C</p>
+                        <p>Feels like: {props.feelsLike} °C</p>
+                        <p>Temp min: {props.tempMin}</p>
+                        <p>Temp max: {props.tempMax}</p>
                     </div>
                     <div className="pressure">
                         <p>Pressure: {props.pressure}</p>
+                    </div>
+                    <div className="img">
+                        <img src='http://openweathermap.org/img/w/${props.img}.png' alt=""/>
                     </div>
                 </div>
             }

@@ -11,7 +11,11 @@ class App extends React.Component {
         country: undefined,
         temp: undefined,
         pressure: undefined,
-        error: undefined
+        feelsLike: undefined,
+        tempMin: undefined,
+        tempMax: undefined,
+        img: undefined,
+        error: undefined,
     };
 
     gettingWeather = (e) => {
@@ -25,7 +29,11 @@ class App extends React.Component {
                             country: data.sys.country,
                             temp: data.main.temp,
                             pressure: data.main.pressure,
-                            error: undefined,
+                            feelsLike: data.main.feels_like,
+                            tempMin: data.main.temp_min,
+                            tempMax: data.main.temp_max,
+                            img: data.weather.icon,
+                            error: undefined
                         })
                     }
                 );
@@ -33,9 +41,6 @@ class App extends React.Component {
         } else {
             this.setState({
                 city: undefined,
-                country: undefined,
-                temp: undefined,
-                pressure: undefined,
                 error: 'Input your city'
             })
         }
@@ -51,7 +56,12 @@ class App extends React.Component {
                          temp={this.state.temp}
                          country={this.state.country}
                          pressure={this.state.pressure}
+                         feelsLike={this.state.feelsLike}
+                         tempMin={this.state.tempMin}
+                         tempMax={this.state.tempMax}
+                         img={this.state.img}
                          error={this.state.error}
+
                 />
             </div>
         );
