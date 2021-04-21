@@ -18,7 +18,7 @@ const Weather = (props) => {
                         <p>Pressure: {props.pressure}</p>
                     </div>
                     <div className="img">
-                        <img src='http://openweathermap.org/img/w/${props.img}.png' alt=""/>
+                        <img src={`http://openweathermap.org/img/w/${props.img}.png`} alt=""/>
                     </div>
                 </div>
             }

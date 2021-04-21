@@ -59,7 +59,7 @@ class App extends React.Component {
                          feelsLike={this.state.feelsLike}
                          tempMin={this.state.tempMin}
                          tempMax={this.state.tempMax}
-                         img={this.state.img}
+                         img={this.state.0.img}
                          error={this.state.error}
 
                 />
